@@ -1,6 +1,10 @@
 import { RecommendationRequest, RecommendationResponse } from "@/types/recommendation";
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+if (!API_BASE_URL) {
+  throw new Error("VITE_API_BASE_URL is not defined");
+}
 
 export async function getRecommendations(
   request: RecommendationRequest
@@ -19,3 +23,5 @@ export async function getRecommendations(
 
   return response.json();
 }
+
+console.log("API URL:", API_BASE_URL);
