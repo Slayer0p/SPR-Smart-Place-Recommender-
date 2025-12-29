@@ -12,13 +12,15 @@ router = APIRouter(
     tags=["Recommendation"]
 )
 
-# ✅ EXPLICIT OPTIONS HANDLER (CRITICAL)
+# ✅ OPTIONS — both paths
 @router.options("")
+@router.options("/")
 def options_recommend():
     return
 
-# ✅ POST ROUTE — NO TRAILING SLASH
+# ✅ POST — both paths
 @router.post("")
+@router.post("/")
 async def recommend(req: dict):
     mood = req["mood"]
     location = req["location"]
@@ -33,12 +35,10 @@ async def recommend(req: dict):
         places = fetch_places(plan["place_types"], location)
         ranked = rank_places(mood, places)
 
-        response = {
+        return {
             "plan": plan,
             "recommendations": ranked
         }
-
-        return response
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
