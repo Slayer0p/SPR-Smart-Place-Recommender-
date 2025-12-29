@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Fraunces:ital,wght@0,400;0,500;0,600;0,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Calming nature-inspired palette */
+    --background: 40 33% 98%;
+    --foreground: 220 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
+
+    /* Soft sage green */
+    --primary: 158 35% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 158 35% 92%;
+
+    /* Warm cream */
+    --secondary: 38 45% 96%;
+    --secondary-foreground: 220 25% 20%;
+
+    /* Muted sage */
+    --muted: 158 15% 94%;
+    --muted-foreground: 220 15% 45%;
+
+    /* Soft coral accent */
+    --accent: 15 70% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 158 20% 88%;
+    --input: 158 20% 88%;
+    --ring: 158 35% 45%;
+
+    --radius: 1rem;
+
+    /* Custom tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(158 35% 92%) 0%, hsl(38 45% 96%) 50%, hsl(15 60% 95%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(40 33% 99%) 100%);
+    --shadow-soft: 0 4px 20px -4px hsl(220 25% 15% / 0.08);
+    --shadow-card: 0 8px 32px -8px hsl(220 25% 15% / 0.1);
+    --shadow-glow: 0 0 40px hsl(158 35% 45% / 0.15);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 25% 10%;
+    --foreground: 40 33% 95%;
+
+    --card: 220 25% 13%;
+    --card-foreground: 40 33% 95%;
+
+    --popover: 220 25% 13%;
+    --popover-foreground: 40 33% 95%;
+
+    --primary: 158 40% 55%;
+    --primary-foreground: 220 25% 10%;
+    --primary-light: 158 30% 20%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 40 33% 90%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 15 65% 60%;
+    --accent-foreground: 220 25% 10%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 22%;
+    --input: 220 20% 22%;
+    --ring: 158 40% 55%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@layer components {
+  .input-calming {
+    @apply w-full rounded-xl border-2 border-input bg-card px-5 py-4 text-base transition-all duration-300 placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground transition-all duration-300 hover:brightness-105 hover:shadow-glow focus:outline-none focus:ring-4 focus:ring-primary/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none;
+  }
+
+  .card-place {
+    @apply rounded-2xl border border-border/50 bg-card p-6 shadow-card transition-all duration-300 hover:shadow-glow hover:-translate-y-1;
+  }
+}
