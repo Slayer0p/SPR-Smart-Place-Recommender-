@@ -14,6 +14,7 @@ app.add_middleware(
         "http://localhost:8080",
         "http://127.0.0.1:8080",
         "https://smartplacerecommender.vercel.app",
+        "https://spr-smart-place-recommender.vercel.app"
     ],  # frontend URLs
     allow_credentials=True,
     allow_methods=["*"],
